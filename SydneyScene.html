@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SydneyScene Feature Requests</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #333;
+    }
+    header {
+      background: #0057b8;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .filters {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .filters button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background: #eee;
+      color: #333;
+      cursor: pointer;
+    }
+    .filters button.active {
+      background: #0057b8;
+      color: #fff;
+    }
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    h2 {
+      color: #0057b8;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .feature { display: none; }
+    .feature.show { display: list-item; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SydneyScene App - Future Feature Requests</h1>
+</header>
+<div class="filters">
+  <button data-filter="all" class="active">All</button>
+  <button data-filter="high">High Priority</button>
+  <button data-filter="medium">Medium Priority</button>
+  <button data-filter="future">Future Considerations</button>
+  <button data-filter="sydney">Sydney Enhancements</button>
+</div>
+
+<section>
+  <ul id="feature-list">
+    <li class="feature high show">Advanced matching algorithms with machine learning.</li>
+    <li class="feature high show">Real-time messaging with WebSocket integration.</li>
+    <li class="feature high show">Advanced event planning tools with calendar integration.</li>
+    <li class="feature medium show">Video chat integration for virtual meetups.</li>
+    <li class="feature medium show">Advanced moderation and reporting systems.</li>
+    <li class="feature medium show">Mobile app development for iOS and Android platforms.</li>
+    <li class="feature future show">Push notifications system.</li>
+    <li class="feature future show">Advanced privacy controls and verification.</li>
+    <li class="feature sydney show">Neighborhood filters (Surry Hills, Newtown, CBD, etc.).</li>
+    <li class="feature sydney show">Integration with Sydney public transport.</li>
+    <li class="feature sydney show">Weather-aware recommendations.</li>
+    <li class="feature sydney show">Beach/outdoor event categories.</li>
+  </ul>
+
+  <h2>Technical Implementation Notes</h2>
+  <ul>
+    <li>Machine learning features will require data science expertise and training data collection.</li>
+    <li>WebSocket implementation needs robust server infrastructure.</li>
+    <li>Calendar integration should support multiple platforms (Google, Apple, Outlook).</li>
+    <li>Video integration may require partnerships with existing providers or custom development.</li>
+    <li>Mobile development will need separate teams for iOS and Android.</li>
+  </ul>
+</section>
+
+<footer style="text-align: center; padding: 20px; font-size: 0.9em; color: #777;">
+  &copy; 2025 SydneyScene. Built for demonstration.
+</footer>
+
+<script>
+const buttons = document.querySelectorAll('.filters button');
+const features = document.querySelectorAll('.feature');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    features.forEach(feat => {
+      if (filter === 'all' || feat.classList.contains(filter)) {
+        feat.classList.add('show');
+      } else {
+        feat.classList.remove('show');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
