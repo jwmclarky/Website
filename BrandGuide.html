@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bytegeist – Brand Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: 'Open Sans', sans-serif;
+        background: linear-gradient(110deg, #181F37 0%, #0D1A2F 100%);
+        color: #dbeafe;
+        letter-spacing: -0.01em;
+      }
+      .font-montserrat { font-family: 'Montserrat', sans-serif; }
+      .font-roboto-mono { font-family: 'Roboto Mono', monospace; }
+      .gradient-text {
+        background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+      .section-card {
+        background: rgba(22, 31, 61, 0.98);
+        border-radius: 1.1rem;
+        box-shadow: 0 2px 16px 0 rgba(45, 77, 146, 0.09);
+        border: 1px solid rgba(56, 189, 248, 0.11);
+      }
+      .subtle-outline {
+        border: 1px solid rgba(56, 189, 248, 0.09);
+      }
+      .icon-bg {
+        background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 20px 0 rgba(56,189,248,0.09);
+      }
+      .divider {
+        border-top: 1px solid rgba(100,116,139,0.15);
+      }
+      .toggle-slider {
+        transition: background 0.3s;
+      }
+      .toggle-dot {
+        transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+      }
+      /* slide dot when checked */
+      #dark-toggle:checked + .toggle-slider + .toggle-dot {
+        transform: translateX(1rem);
+      }
+      #dark-toggle:checked + .toggle-slider {
+        background: #38bdf8;
+      }
+      .tooltip {
+        position: absolute;
+        left: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #1e293b;
+        color: #bae6fd;
+        padding: 0.55em 1em;
+        border-radius: 0.6em;
+        white-space: nowrap;
+        font-size: 0.95em;
+        box-shadow: 0 2px 14px rgba(45,77,146,0.07);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s;
+        z-index: 50;
+      }
+      .has-tooltip:hover .tooltip,
+      .has-tooltip:focus .tooltip {
+        opacity: 1;
+      }
+      /* Animate icons */
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(-8deg);} 
+        50% { transform: rotate(12deg);} 
+      }
+      .wiggle {
+        animation: wiggle 1.7s infinite;
+      }
+      /* apply wiggle on group hover */
+      .group:hover .group-hover\:wiggle {
+        animation: wiggle 1.7s infinite;
+      }
+      @media (max-width: 900px) {
+        .flex-hero { flex-direction: column; text-align: center; }
+        .hero-logo { margin-bottom: 1.8rem; }
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen antialiased text-slate-100 bg-[#0D1A2F] selection:bg-sky-700 selection:text-slate-100">
+    <!-- Navbar -->
+    <nav class="max-w-7xl mx-auto px-5 py-6 flex items-center justify-between">
+      <div class="flex items-center hero-logo gap-3">
+        <div class="icon-bg h-12 w-12 mr-2">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polygon points="14,3 25,9.5 25,21.5 14,28 3,21.5 3,9.5" stroke="#38bdf8" stroke-width="2.2" fill="url(#g1)"></polygon>
+            <defs>
+              <linearGradient id="g1" x1="3" y1="3" x2="25" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2563eb"></stop>
+                <stop offset="1" stop-color="#38bdf8"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="text-2xl font-montserrat font-semibold tracking-tight">Bytegeist</span>
+      </div>
+      <div class="hidden md:flex gap-7 text-base font-medium font-montserrat">
+        <a href="#bio" class="hover:text-sky-400 transition">Brand Bio</a>
+        <a href="#palette" class="hover:text-sky-400 transition">Color</a>
+        <a href="#typography" class="hover:text-sky-400 transition">Typography</a>
+        <a href="#logos" class="hover:text-sky-400 transition">Logos</a>
+        <a href="#usage" class="hover:text-sky-400 transition">Usage</a>
+      </div>
+      <a href="#" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-md bg-sky-700 text-white font-montserrat font-medium hover:bg-sky-800 transition shadow" style="font-size:1rem;">
+        <i data-lucide="rocket" class="w-5 h-5"></i> Contact
+      </a>
+    </nav>
+    <div class="divider max-w-7xl mx-auto"></div>
+
+    <!-- HERO -->
+    <section class="max-w-7xl mx-auto px-5 py-14 flex flex-hero items-center gap-12">
+      <div class="flex-1">
+        <h1 class="text-5xl sm:text-6xl font-montserrat font-semibold tracking-tight mb-4 gradient-text" style="line-height:1.12;">
+          Visual Brand Guide
+        </h1>
+        <p class="text-xl sm:text-2xl mb-7 text-slate-300 font-normal max-w-2xl" style="font-family:'Open Sans',sans-serif;">
+          Bytegeist: Brand fuel for the next era.<br />
+          <span class="text-[#f87171] font-montserrat font-semibold">Strategic. Creative. AI-powered.</span>
+        </p>
+        <div class="flex flex-wrap items-center gap-4 mt-2">
+          <a href="#bio" class="px-6 py-3 font-montserrat font-semibold text-white rounded-lg" style="background:linear-gradient(90deg,#2563eb,#38bdf8); box-shadow:0 2px 13px 0 rgba(56,189,248,0.14);">
+            Read Brand Bio
+          </a>
+          <button onclick="toggleDark()" class="group flex items-center gap-2 px-4 py-2 rounded-lg font-montserrat text-sky-400 border border-sky-500 hover:bg-sky-600 hover:text-white transition focus:outline-none">
+            <i data-lucide="moon" class="w-5 h-5 group-hover:wiggle"></i>
+            Toggle Mode
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 max-w-md min-w-[270px]">
+        <div class="section-card p-8 subtle-outline flex flex-col items-center relative overflow-hidden" style="min-height:340px;">
+          <svg class="absolute right-0 top-0 opacity-20" width="120" height="120">
+            <polygon points="60,12 108,36 108,84 60,108 12,84 12,36" stroke="#38bdf8" stroke-width="2" fill="none"></polygon>
+          </svg>
+          <span class="relative has-tooltip">
+            <i data-lucide="sparkle" class="w-12 h-12 text-sky-300 mb-4 wiggle"></i>
+            <span class="tooltip">AI-powered magic</span>
+          </span>
+          <span class="font-montserrat text-xl font-semibold tracking-tight mb-2 gradient-text">Bytegeist</span>
+          <p class="text-slate-200 text-base leading-relaxed mb-2 text-center">
+            Full-stack creative growth studio for the bold.<br />
+            <span class="text-[#f87171] font-montserrat font-semibold">AI + Authenticity</span>
+          </p>
+          <span class="uppercase tracking-wide font-roboto-mono text-xs text-sky-400">Sydney · Global</span>
+        </div>
+      </div>
+    </section>
+    <div class="divider max-w-7xl mx-auto"></div>
+
+    <!-- Interactive Brand Bio -->
+    <section class="max-w-5xl mx-auto px-5 py-12" id="bio">
+      <h2 class="font-montserrat text-3xl sm:text-4xl font-semibold tracking-tight mb-5 gradient-text">Bytegeist – Brand Bio</h2>
+      <div class="relative section-card subtle-outline px-0 py-0 overflow-hidden">
+        <div>
+          <!-- Expand/collapse sections -->
+          <button class="w-full text-left px-7 py-5 flex items-center justify-between group focus:outline-none hover:bg-sky-900/30 transition" onclick="toggleCollapse('bio-main')">
+            <span class="font-montserrat text-xl font-semibold gradient-text">What We Do</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-sky-400 group-hover:translate-y-1 transition-transform" id="icon-bio-main"></i>
+          </button>
+          <div id="bio-main" class="px-7 pb-4 text-slate-200 text-[1.09rem]" style="display:none;">
+            At Bytegeist, we fuse cutting-edge AI tools with sharp strategy and standout creative. From growth marketing to digital design, from website builds to ad campaigns, we’re your plug-in growth department.<br />
+            <span class="text-[#f87171] font-semibold">We don’t do cookie-cutter. We don’t do fluff.</span>
+            <br /><br />
+            <b class="text-sky-400">Our services include:</b>
+            <ul class="pl-6 mt-2 space-y-1 list-disc">
+              <li>Strategic growth campaigns (Google Ads, Meta, YouTube & more)</li>
+              <li>Website & landing page design + development</li>
+              <li>Conversion-focused branding & rebranding</li>
+              <li>Funnel optimization & CRM integration</li>
+              <li>Content repurposing & social media kits</li>
+              <li>AI automations & no-code workflows</li>
+            </ul>
+          </div>
+          <div class="divider"></div>
+          <button class="w-full text-left px-7 py-5 flex items-center justify-between group focus:outline-none hover:bg-sky-900/30 transition" onclick="toggleCollapse('bio-why')">
+            <span class="font-montserrat text-xl font-semibold gradient-text">Why Bytegeist?</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-sky-400 group-hover:translate-y-1 transition-transform" id="icon-bio-why"></i>
+          </button>
+          <div id="bio-why" class="px-7 pb-4 text-slate-200 text-[1.09rem]" style="display:none;">
+            <b>Because growth doesn’t need to be boring. Because your brand isn’t just a logo. Because strategy should be sexy, storytelling should sell, and AI should actually save you time.</b><br /><br />
+            We bring the tech-forward edge of a startup studio with the creative guts of a brand agency.<br />
+            Whether you’re a local legend or a digital disruptor, we turn ideas into revenue—and we do it without the bloated retainers, beige slide decks, or cookie-cutter templates.
+          </div>
+          <div class="divider"></div>
+          <button class="w-full text-left px-7 py-5 flex items-center justify-between group focus:outline-none hover:bg-sky-900/30 transition" onclick="toggleCollapse('bio-who')">
+            <span class="font-montserrat text-xl font-semibold gradient-text">Who We Work With</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-sky-400 group-hover:translate-y-1 transition-transform" id="icon-bio-who"></i>
+          </button>
+          <div id="bio-who" class="px-7 pb-4 text-slate-200 text-[1.09rem]" style="display:none;">
+            We partner with local legends, upstart e-commerce rebels, service-based slayers, and startups on the rise.<br />
+            Whether you’re a solo operator or a scaling team, we tailor our approach to amplify your strengths and shore up your gaps.
+          </div>
+          <div class="divider"></div>
+          <button class="w-full text-left px-7 py-5 flex items-center justify-between group focus:outline-none hover:bg-sky-900/30 transition" onclick="toggleCollapse('bio-edge')">
+            <span class="font-montserrat text-xl font-semibold gradient-text">Our Edge? AI + Authenticity</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-sky-400 group-hover:translate-y-1 transition-transform" id="icon-bio-edge"></i>
+          </button>
+          <div id="bio-edge" class="px-7 pb-4 text-slate-200 text-[1.09rem]" style="display:none;">
+            AI isn’t a buzzword here—it’s built into our workflow. We use automation to streamline campaigns, content, and reporting, so you can focus on vision while we handle execution.<br />
+            But don’t mistake automation for apathy. We’re obsessed with clarity, conversion, and creativity in equal measure.
+          </div>
+          <div class="divider"></div>
+          <button class="w-full text-left px-7 py-5 flex items-center justify-between group focus:outline-none hover:bg-sky-900/30 transition" onclick="toggleCollapse('bio-values')">
+            <span class="font-montserrat text-xl font-semibold gradient-text">Core Values</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 text-sky-400 group-hover:translate-y-1 transition-transform" id="icon-bio-values"></i>
+          </button>
+          <div id="bio-values" class="px-7 pb-7 text-slate-200 text-[1.09rem]" style="display:none;">
+            <ul class="pl-6 mt-2 space-y-1 list-disc">
+              <li>Clarity over complexity</li>
+              <li>Creativity that performs</li>
+              <li>Curiosity in everything</li>
+              <li>Courage to do things differently</li>
+            </ul>
+            <div class="mt-4 text-sky-400 font-semibold flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-5 h-5"></i> Based in Sydney. Working globally. Powered by caffeine and chaos.
+            </div>
+            <div class="mt-2 text-slate-300">
+              Bytegeist: Brand fuel for the next era. Let’s build something that sticks in people’s heads—and lives in their feeds.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="divider max-w-7xl mx-auto"></div>
+
+    <!-- Color Palette & Typography -->
+    <section class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-10" id="palette">
+      <!-- Color Palette -->
+      <div>
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Color Palette</h3>
+        <div class="flex gap-6 mb-6">
+          <div class="has-tooltip relative">
+            <div style="background:linear-gradient(90deg,#2563eb,#38bdf8);" class="w-16 h-16 rounded-lg border-2 border-slate-700 mb-1"></div>
+            <span class="font-roboto-mono text-xs">Primary<br />#2563eb→#38bdf8</span>
+            <span class="tooltip">Main gradient</span>
+          </div>
+          <div class="has-tooltip relative">
+            <div class="w-16 h-16 rounded-lg border-2 border-slate-700 mb-1" style="background:#0D1A2F"></div>
+            <span class="font-roboto-mono text-xs">Navy<br />#0D1A2F</span>
+            <span class="tooltip">Background base</span>
+          </div>
+          <div class="has-tooltip relative">
+            <div class="w-16 h-16 rounded-lg border-2 border-slate-700 mb-1" style="background:#1e293b"></div>
+            <span class="font-roboto-mono text-xs">Slate<br />#1e293b</span>
+            <span class="tooltip">Surface</span>
+          </div>
+          <div class="has-tooltip relative">
+            <div class="w-16 h-16 rounded-lg border-2 border-slate-700 mb-1" style="background:#f87171"></div>
+            <span class="font-roboto-mono text-xs">Accent<br />#f87171</span>
+            <span class="tooltip">Highlight/CTA</span>
+          </div>
+        </div>
+        <div class="rounded-lg py-3 px-5 bg-gradient-to-br from-sky-900/50 to-sky-600/20 border border-sky-700/30 text-slate-300 text-sm leading-6">
+          Use gradients for callouts, overlays, and buttons.<br />
+          Accent coral for highlights and CTAs.
+        </div>
+        <div class="mt-7 flex items-center gap-3">
+          <span class="font-roboto-mono text-xs text-sky-400">Dark Mode</span>
+          <span class="relative inline-block w-10 align-middle select-none">
+            <input type="checkbox" id="dark-toggle" class="sr-only" checked onclick="toggleDarkModeUI(this)" />
+            <div class="toggle-slider block bg-slate-700 rounded-full h-6 w-10"></div>
+            <div class="toggle-dot absolute left-1 top-1 bg-sky-400 w-4 h-4 rounded-full"></div>
+          </span>
+        </div>
+      </div>
+      <!-- Typography -->
+      <div id="typography">
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Typography</h3>
+        <div class="flex flex-col gap-2">
+          <div>
+            <span class="font-montserrat text-2xl font-semibold tracking-tight">Montserrat</span>
+            <span class="ml-2 font-roboto-mono text-xs text-sky-400">Headlines</span>
+          </div>
+          <div class="text-lg font-normal text-slate-300" style="font-family:'Open Sans',sans-serif;">Open Sans – body &amp; paragraphs</div>
+          <div class="font-roboto-mono text-base tracking-tight text-sky-300">Roboto Mono – code &amp; captions</div>
+        </div>
+        <div class="flex gap-4 mt-6">
+          <span class="px-4 py-2 bg-sky-800 text-slate-100 rounded-md font-roboto-mono text-xs">Aa</span>
+          <span class="px-4 py-2 bg-slate-800 text-slate-200 rounded-md font-montserrat font-semibold text-sm">Bold headlines</span>
+          <span class="px-4 py-2 bg-[#f87171] text-white rounded-md font-roboto-mono text-xs">Monospace</span>
+        </div>
+      </div>
+    </section>
+    <div class="divider max-w-7xl mx-auto"></div>
+
+    <!-- Logo Section (with hover interaction) -->
+    <section class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-10" id="logos">
+      <div>
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Logo System</h3>
+        <div class="flex gap-10">
+          <!-- Primary Logo -->
+          <div class="flex flex-col items-center has-tooltip group cursor-pointer">
+            <div class="icon-bg h-16 w-16 mb-2 group-hover:scale-110 transition-transform">
+              <svg width="38" height="38" viewBox="0 0 28 28" fill="none">
+                <polygon points="14,3 25,9.5 25,21.5 14,28 3,21.5 3,9.5" stroke="#38bdf8" stroke-width="2.2" fill="url(#g2)"></polygon>
+                <defs>
+                  <linearGradient id="g2" x1="3" y1="3" x2="25" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2563eb"></stop>
+                    <stop offset="1" stop-color="#38bdf8"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="font-montserrat text-lg font-semibold tracking-tight">Primary</span>
+            <span class="mt-1 font-roboto-mono text-xs text-sky-300">Wordmark + Icon</span>
+            <span class="tooltip">Main logo: gradient icon + text</span>
+          </div>
+          <!-- Secondary Logo -->
+          <div class="flex flex-col items-center has-tooltip group cursor-pointer">
+            <div class="icon-bg h-16 w-16 mb-2 group-hover:scale-110 transition-transform">
+              <svg width="38" height="38" viewBox="0 0 28 28" fill="none">
+                <polygon points="14,3 25,9.5 25,21.5 14,28 3,21.5 3,9.5" stroke="#38bdf8" stroke-width="2.2" fill="none"></polygon>
+              </svg>
+            </div>
+            <span class="font-montserrat text-lg font-semibold tracking-tight">Secondary</span>
+            <span class="mt-1 font-roboto-mono text-xs text-sky-300">Icon Only</span>
+            <span class="tooltip">Hex-only mark for avatars</span>
+          </div>
+        </div>
+        <div class="mt-6 text-sm rounded-lg py-3 px-5 bg-sky-900/40 border border-sky-800/30 text-slate-300">
+          Maintain clear space equal to icon height.<br />
+          Minimum size: <span class="font-roboto-mono">40px</span> for digital use.
+        </div>
+      </div>
+      <div>
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Logo Dos &amp; Don'ts</h3>
+        <ul class="list-none p-0 text-base">
+          <li class="flex items-center gap-3 mb-2 has-tooltip">
+            <i data-lucide="check" class="w-5 h-5 text-sky-400"></i> Use icons on dark/gradient backgrounds
+            <span class="tooltip">Ensures clarity</span>
+          </li>
+          <li class="flex items-center gap-3 mb-2">
+            <i data-lucide="check" class="w-5 h-5 text-sky-400"></i> Keep consistent padding and sizing
+          </li>
+          <li class="flex items-center gap-3 mb-2">
+            <i data-lucide="check" class="w-5 h-5 text-sky-400"></i> High contrast for readability
+          </li>
+          <li class="flex items-center gap-3 mb-2">
+            <i data-lucide="x" class="w-5 h-5 text-[#f87171]"></i> Don’t stretch/distort the logo
+          </li>
+          <li class="flex items-center gap-3 mb-2">
+            <i data-lucide="x" class="w-5 h-5 text-[#f87171]"></i> Don’t place on noisy images
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="x" class="w-5 h-5 text-[#f87171]"></i> Don’t rotate off baseline
+          </li>
+        </ul>
+      </div>
+    </section>
+    <div class="divider max-w-7xl mx-auto"></div>
+
+    <!-- Brand Usage + Patterns -->
+    <section class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-10" id="usage">
+      <!-- Stationery & Social -->
+      <div>
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Templates &amp; Social</h3>
+        <ul class="mb-5 text-base space-y-2">
+          <li class="flex items-center gap-3 has-tooltip">
+            <i data-lucide="credit-card" class="w-5 h-5 text-sky-300"></i>
+            Business Cards: Logo, contact, gradient strip
+            <span class="tooltip">Keep icons left-aligned</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="mail" class="w-5 h-5 text-sky-400"></i> Email Signature: Icon, name/title, contact links
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="sliders" class="w-5 h-5 text-[#f87171]"></i> Slide Decks: Gradient title, clean headers/footers
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="instagram" class="w-5 h-5 text-[#f87171]"></i> Social: Icon avatar, gradient covers, branded CTAs
+          </li>
+        </ul>
+        <div class="rounded-lg py-3 px-5 bg-sky-900/40 border border-sky-700/30 text-slate-300 text-sm">
+          Use overlays, coral accents, and geometric patterns for brand consistency.
+        </div>
+      </div>
+      <!-- Patterns & Iconography -->
+      <div>
+        <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-4 gradient-text">Iconography &amp; Patterns</h3>
+        <ul class="mb-5 text-base space-y-2">
+          <li class="flex items-center gap-3">
+            <i data-lucide="hexagon" class="w-5 h-5 text-sky-400"></i> Minimal, line-based icons
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="circuit-board" class="w-5 h-5 text-sky-300"></i> Subtle hexagon/circuit patterns in headers
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="layers" class="w-5 h-5 text-slate-300"></i> Use dark opacity for texture layering (8–15%)
+          </li>
+          <li class="flex items-center gap-3">
+            <i data-lucide="eye" class="w-5 h-5 text-[#f87171]"></i> Always maintain clarity and contrast
+          </li>
+        </ul>
+        <div class="rounded-lg py-3 px-5 bg-sky-900/40 border border-sky-700/30 text-slate-300 text-sm">
+          Geometric, grid, and floating line elements allowed for supporting graphics.
+        </div>
+      </div>
+    </section>
+    <div class="divider max-w-7xl mx-auto mt-10"></div>
+
+    <!-- Chart: Brand Consistency -->
+    <section class="max-w-5xl mx-auto px-5 py-16">
+      <h3 class="font-montserrat text-2xl font-semibold tracking-tight mb-7 gradient-text">Brand Consistency Performance</h3>
+      <div class="section-card p-7 subtle-outline">
+        <div class="flex flex-col md:flex-row items-center gap-7">
+          <div class="flex-1 min-w-[220px]">
+            <div class="w-full max-w-xs mx-auto relative">
+              <div style="background:rgba(56,189,248,0.07);border-radius:1.5rem;" class="p-2">
+                <div style="background:rgba(37,99,235,0.10);border-radius:1rem;" class="p-4">
+                  <canvas id="consistencyChart" width="320" height="180" aria-label="Brand consistency chart"></canvas>
+                </div>
+              </div>
+              <div id="chart-hover-label" style="display:none;" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-sky-400 font-montserrat text-lg font-semibold pointer-events-none">
+                Hover for details
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <p class="text-lg text-slate-200 mb-3">
+              Bytegeist’s branding is recognized for <span class="font-montserrat font-semibold text-sky-400">95%+ consistency</span> across web, print, and social platforms.
+            </p>
+            <ul class="list-disc pl-5 text-base text-slate-200/80">
+              <li>Gradient &amp; accent usage matched on 98% of assets</li>
+              <li>Iconography uniformity at 99%</li>
+              <li>Logo scaling/padding issues: &lt;2%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="max-w-7xl mx-auto px-5 pb-8 pt-6 flex flex-col md:flex-row items-center justify-between text-base text-slate-400 border-t border-sky-800/30">
+      <div class="flex items-center gap-2 font-montserrat font-semibold text-slate-100">
+        <span>Bytegeist</span>
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+          <polygon points="14,3 25,9.5 25,21.5 14,28 3,21.5 3,9.5" stroke="#38bdf8" stroke-width="2.2" fill="none"></polygon>
+        </svg>
+      </div>
+      <span class="font-roboto-mono text-xs mt-2 md:mt-0">© 2024 Bytegeist. All rights reserved.</span>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+
+      // Collapsible sections
+      function toggleCollapse(id) {
+        const el = document.getElementById(id);
+        const icon = document.getElementById('icon-' + id);
+        if (el.style.display === 'none' || el.style.display === '') {
+          el.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          el.style.display = 'none';
+          icon.style.transform = '';
+        }
+      }
+
+      // Dark mode toggle (UI only)
+      function toggleDark() {
+        document.body.classList.toggle('bg-[#0D1A2F]');
+        document.body.classList.toggle('bg-slate-100');
+        document.body.classList.toggle('text-slate-100');
+        document.body.classList.toggle('text-slate-900');
+      }
+      function toggleDarkModeUI(cb) {
+        toggleDark();
+        cb.checked = document.body.classList.contains('bg-[#0D1A2F]');
+      }
+
+      // Chart.js for Brand Consistency
+      const ctx = document.getElementById('consistencyChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Consistency', 'Variance'],
+          datasets: [{
+            data: [95, 5],
+            backgroundColor: [
+              '#38bdf8',
+              '#181F37'
+            ],
+            borderWidth: [0,0],
+            borderColor: ['#38bdf8','#181F37'],
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          cutout: '78%',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                label: function(context) {
+                  let label = context.label || '';
+                  let value = context.parsed;
+                  return `${label}: ${value}%`;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Info overlay on chart hover
+      const chartCanvas = document.getElementById('consistencyChart');
+      const hoverLabel = document.getElementById('chart-hover-label');
+      chartCanvas.addEventListener('mouseenter', () => hoverLabel.style.display = 'block');
+      chartCanvas.addEventListener('mouseleave', () => hoverLabel.style.display = 'none');
+
+      // Animate sparkle icon
+      const sparkle = document.querySelector('.wiggle');
+      if(sparkle){
+        sparkle.animate([
+          { transform: 'rotate(-8deg)' },
+          { transform: 'rotate(12deg)' },
+          { transform: 'rotate(-8deg)' }
+        ], { duration: 1700, iterations: Infinity });
+      }
+    </script>
+  </body>
+</html>
